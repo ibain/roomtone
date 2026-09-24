@@ -1,51 +1,125 @@
 {
-  "fill" : {
-    "linear-gradient" : [
-      "display-p3:0.27803,0.37285,0.54379,1.00000",
-      "display-p3:0.53540,0.64058,0.80872,1.00000"
-    ],
-    "orientation" : {
-      "start" : {
-        "x" : 0.5,
-        "y" : 0
-      },
-      "stop" : {
-        "x" : 0.5,
-        "y" : 0.7
-      }
-    }
-  },
-  "groups" : [
+  "groups": [
     {
-      "layers" : [
+      "name": "Strand 2",
+      "layers": [
         {
-          "hidden" : false,
-          "image-name" : "Roomtone.png",
-          "name" : "Roomtone",
-          "position" : {
-            "scale" : 1.23,
-            "translation-in-points" : [
-              0,
-              0
-            ]
-          }
+          "name": "strand-2",
+          "image-name": "strand-2.svg",
+          "glass": true
         }
       ],
-      "name" : "Example",
-      "shadow" : {
-        "kind" : "neutral",
-        "opacity" : 0.5
+      "shadow": {
+        "kind": "neutral",
+        "opacity": 0.55
       },
-      "translucency" : {
-        "enabled" : true,
-        "value" : 0.5
-      }
+      "translucency": {
+        "enabled": false,
+        "value": 0
+      },
+      "specular": true
+    },
+    {
+      "name": "Strand 3",
+      "layers": [
+        {
+          "name": "strand-3",
+          "image-name": "strand-3.svg",
+          "glass": true
+        }
+      ],
+      "shadow": {
+        "kind": "neutral",
+        "opacity": 0.55
+      },
+      "translucency": {
+        "enabled": false,
+        "value": 0
+      },
+      "specular": true
+    },
+    {
+      "name": "Strand 4",
+      "layers": [
+        {
+          "name": "strand-4",
+          "image-name": "strand-4.svg",
+          "glass": true
+        }
+      ],
+      "shadow": {
+        "kind": "neutral",
+        "opacity": 0.55
+      },
+      "translucency": {
+        "enabled": false,
+        "value": 0
+      },
+      "specular": true
+    },
+    {
+      "name": "Strand 1",
+      "layers": [
+        {
+          "name": "strand-1",
+          "image-name": "strand-1.svg",
+          "glass": true
+        }
+      ],
+      "shadow": {
+        "kind": "neutral",
+        "opacity": 0.55
+      },
+      "translucency": {
+        "enabled": false,
+        "value": 0
+      },
+      "specular": true
     }
   ],
-  "supported-platforms" : {
-    "circles" : [
+  "supported-platforms": {
+    "circles": [
       "watchOS"
     ],
-    "squares" : "shared"
-  }
+    "squares": "shared"
+  },
+  "fill-specializations": [
+    {
+      "value": {
+        "linear-gradient": [
+          "srgb:0.13725,0.25098,0.47843,1.00000",
+          "srgb:0.03922,0.06275,0.13333,1.00000"
+        ],
+        "orientation": {
+          "start": {
+            "x": 0.7,
+            "y": 0
+          },
+          "stop": {
+            "x": 0.4,
+            "y": 1
+          }
+        }
+      }
+    },
+    {
+      "appearance": "dark",
+      "value": {
+        "linear-gradient": [
+          "srgb:0.07843,0.11373,0.21961,1.00000",
+          "srgb:0.01569,0.02353,0.04706,1.00000"
+        ],
+        "orientation": {
+          "start": {
+            "x": 0.7,
+            "y": 0
+          },
+          "stop": {
+            "x": 0.4,
+            "y": 1
+          }
+        }
+      }
+    }
+  ]
 }
