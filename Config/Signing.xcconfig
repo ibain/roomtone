@@ -1,0 +1,8 @@
+// Signing for builds from source. Do not put your team ID here.
+// Copy Signing.local.xcconfig.example to Signing.local.xcconfig (gitignored)
+// and set your own values there.
+
+DEVELOPMENT_TEAM =
+PRODUCT_BUNDLE_IDENTIFIER = com.ibain.roomtone
+
+#include? "Signing.local.xcconfig"

@@ -41,3 +41,6 @@ Scripts/asr/models/
 .vscode/
 *.code-workspace
 __pycache__/
+
+# Personal signing (see Config/Signing.local.xcconfig.example)
+Config/Signing.local.xcconfig

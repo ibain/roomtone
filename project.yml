@@ -13,10 +13,8 @@ settings:
     MACOSX_DEPLOYMENT_TARGET: "14.0"
     CODE_SIGN_STYLE: Automatic
     CODE_SIGN_IDENTITY: Apple Development
-    DEVELOPMENT_TEAM: 2QYXCRU48S
     CODE_SIGN_ENTITLEMENTS: Roomtone/Resources/Roomtone.entitlements
     INFOPLIST_FILE: Roomtone/Resources/Info.plist
-    PRODUCT_BUNDLE_IDENTIFIER: com.ibain.roomtone
     PRODUCT_NAME: Roomtone
     GENERATE_INFOPLIST_FILE: false
     ENABLE_HARDENED_RUNTIME: true
@@ -29,6 +27,9 @@ targets:
   Roomtone:
     type: application
     platform: macOS
+    configFiles:
+      Debug: Config/Signing.xcconfig
+      Release: Config/Signing.xcconfig
     sources:
       - path: Roomtone
         excludes:
@@ -47,7 +48,6 @@ targets:
           - "@executable_path/../Frameworks"
         CODE_SIGN_STYLE: Automatic
         CODE_SIGN_IDENTITY: Apple Development
-        DEVELOPMENT_TEAM: 2QYXCRU48S
         ENABLE_HARDENED_RUNTIME: true
         DEAD_CODE_STRIPPING: true
     entitlements:

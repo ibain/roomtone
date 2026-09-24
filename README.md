@@ -39,13 +39,13 @@ cd roomtone
 bash Scripts/asr/setup.sh   # creates Scripts/asr/.venv
 ```
 
-**Set your own signing** before generating the project. In `project.yml`, change
-`DEVELOPMENT_TEAM` (both places) to your Apple team ID and
-`PRODUCT_BUNDLE_IDENTIFIER` to something you own, like `com.yourname.roomtone`.
-A free Apple ID works. Edit `project.yml` rather than Xcode's signing settings,
-because `xcodegen generate` overwrites the Xcode project.
+**Set your own signing** before generating the project. Copy the example file
+and put your Apple team ID and a bundle ID you own (like `com.yourname.roomtone`)
+in it. A free Apple ID works. The copy is gitignored. Use this file rather than
+Xcode's signing settings, because `xcodegen generate` overwrites the Xcode project.
 
 ```bash
+cp Config/Signing.local.xcconfig.example Config/Signing.local.xcconfig
 xcodegen generate
 open Roomtone.xcodeproj
 ```

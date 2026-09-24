@@ -1,0 +1,5 @@
+// Copy to Signing.local.xcconfig, then run `xcodegen generate`.
+// A free Apple ID works. Find your team ID in Xcode > Settings > Accounts.
+
+DEVELOPMENT_TEAM = YOUR_TEAM_ID
+PRODUCT_BUNDLE_IDENTIFIER = com.yourname.roomtone

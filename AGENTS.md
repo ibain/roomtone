@@ -119,6 +119,11 @@ or reorder steps without re-measuring every meeting.
 
 Append newest first, one line each.
 
+- 2026-09-24 — Signing moved to `Config/Signing.xcconfig` (no team ID, committed)
+  plus `Config/Signing.local.xcconfig` (gitignored) for your own team and bundle ID.
+  Don't put `DEVELOPMENT_TEAM` or `PRODUCT_BUNDLE_IDENTIFIER` back in `project.yml`:
+  settings there override the xcconfig.
+
 - 2026-09-23 — Pre-public cleanup: `VOCATIVE_NAMES` moved from code to
   `<Roomtone folder>/names.txt` (loaded by `load_vocative_names`; same 23 names,
   so behaviour unchanged here). Script lookup uses `RoomtoneSourceRoot`
