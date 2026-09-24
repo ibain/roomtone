@@ -89,9 +89,12 @@ final class AppModel: ObservableObject {
         if newSettings.ai.apiKey != settings.ai.apiKey, !APIKeyStore.save(newSettings.ai.apiKey) {
             lastError = "Couldn't save the API key to the keychain."
         }
+        let folderChanged = newSettings.resolvedOutputDirectory != settings.resolvedOutputDirectory
         settings = newSettings
         newSettings.save()
         applyAppearance()
+        // Settings auto-save, so only reload the list when the folder actually moved.
+        guard folderChanged else { return }
         if let fileStore = store as? FileMeetingStore {
             fileStore.rootDirectory = newSettings.resolvedOutputDirectory
         }

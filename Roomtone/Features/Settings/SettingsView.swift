@@ -4,10 +4,13 @@ import AppKit
 struct SettingsView: View {
     @EnvironmentObject private var appModel: AppModel
     @State private var draft: AppSettings = .defaults
+    @FocusState private var focusedField: TextFieldID?
+
+    private enum TextFieldID { case outputDirectory, sampleRate, baseURL, model, apiKey }
 
     var body: some View {
         Form {
-            // Applies immediately, independent of Save.
+            // Applies immediately via AppModel, not through draft.
             Section("Appearance") {
                 Picker("Appearance", selection: Binding(
                     get: { appModel.settings.appearance },
@@ -26,9 +29,11 @@ struct SettingsView: View {
             Section("Recording") {
                 HStack {
                     TextField("Output directory", text: $draft.outputDirectoryPath)
+                        .focused($focusedField, equals: .outputDirectory)
                     Button("Choose…") { pickFolder() }
                 }
                 TextField("Sample rate", value: $draft.sampleRate, format: .number)
+                    .focused($focusedField, equals: .sampleRate)
                 Picker("Transcription language", selection: languageBinding) {
                     ForEach(WhisperLanguage.pickerOrder) { language in
                         Text(language.displayName).tag(language)
@@ -55,8 +60,11 @@ struct SettingsView: View {
                         .foregroundStyle(.orange)
                 }
                 TextField("Base URL", text: $draft.ai.baseURL)
+                    .focused($focusedField, equals: .baseURL)
                 TextField("Model", text: $draft.ai.model)
+                    .focused($focusedField, equals: .model)
                 SecureField("API Key", text: $draft.ai.apiKey)
+                    .focused($focusedField, equals: .apiKey)
             }
 
             Section("Export") {
@@ -81,13 +89,6 @@ struct SettingsView: View {
                 Toggle("Never upload automatically", isOn: $draft.neverUploadAutomatically)
                     .disabled(true)
             }
-
-            Button("Save") {
-                syncModelToLanguage()
-                // Don't let a stale draft undo a toolbar appearance change.
-                draft.appearance = appModel.settings.appearance
-                appModel.updateSettings(draft)
-            }
         }
         .padding(20)
         .frame(width: 560, height: 600)
@@ -95,6 +96,37 @@ struct SettingsView: View {
             draft = appModel.settings
             syncModelToLanguage()
         }
+        // Mac-style auto-save: controls apply on change, text fields when editing ends
+        // (Return, Tab, click away), and closing the window saves whatever is left.
+        .onChange(of: draft) { old, new in
+            // A text field is usually focused as soon as the window opens, so check what
+            // changed rather than whether one is focused.
+            if focusedField == nil || !onlyTextFieldsDiffer(old, new) { save() }
+        }
+        .onChange(of: focusedField) { save() }
+        .onSubmit { save() }
+        // SwiftUI can keep the Settings view alive after close, so onDisappear isn't reliable.
+        .onReceive(NotificationCenter.default.publisher(for: NSWindow.willCloseNotification)) { _ in
+            save()
+        }
+    }
+
+    private func save() {
+        var next = draft
+        // Don't let a stale draft undo a toolbar appearance change.
+        next.appearance = appModel.settings.appearance
+        guard next != appModel.settings else { return }
+        appModel.updateSettings(next)
+    }
+
+    private func onlyTextFieldsDiffer(_ old: AppSettings, _ new: AppSettings) -> Bool {
+        var typed = old
+        typed.outputDirectoryPath = new.outputDirectoryPath
+        typed.sampleRate = new.sampleRate
+        typed.ai.baseURL = new.ai.baseURL
+        typed.ai.model = new.ai.model
+        typed.ai.apiKey = new.ai.apiKey
+        return typed == new
     }
 
     private var selectedLanguage: WhisperLanguage {
