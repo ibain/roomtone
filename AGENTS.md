@@ -60,6 +60,11 @@ Scripts/asr/.venv/bin/python Scripts/asr/reprocess_meeting.py \
   --meeting-dir "<dir>" --me-from "<backup>/asr-raw.json" --reuse-words
 ```
 
+`main` is protected: changes go through a PR, and CI (`.github/workflows/ci.yml`)
+must pass. It builds unsigned, fails if `Roomtone.xcodeproj` differs from a fresh
+`xcodegen generate` (XcodeGen pinned to 2.46.0), and syntax-checks the Python.
+Admins can bypass for docs-only pushes.
+
 `--reuse-words` skips Whisper and reuses cached word times — use it for every
 diarization experiment, it turns a 100s run into 10s.
 
