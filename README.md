@@ -6,7 +6,9 @@ Records your mic and the meeting audio (Zoom, Slack, Meet, whatever) as separate
 tracks, transcribes offline, labels speakers, and exports transcripts. Summaries
 are optional and can use a local model or a cloud one.
 
-[![License: PolyForm Noncommercial](https://img.shields.io/badge/license-PolyForm%20Noncommercial-blue)](./LICENSE)
+![Roomtone meeting view showing summary, action items, speaker labels, and transcript](docs/images/roomtone-meeting-dark.png)
+
+[![License: PolyForm Noncommercial](docs/images/license-badge.svg)](./LICENSE)
 
 > **Source available — free for personal use.**  
 > Not an OSI “Open Source” license. Commercial / white-label use needs a [deal](./COMMERCIAL.md).
@@ -53,7 +55,11 @@ open Roomtone.xcodeproj
 Build and run the **Roomtone** scheme. The app finds `Scripts/asr/` in the
 checkout it was built from, so keep the clone where it is.
 
-## First recording
+## Recording
+
+Roomtone records your microphone and meeting audio as separate tracks while keeping recordings local.
+
+![Roomtone recording screen](docs/images/roomtone-recording.png)
 
 1. Click record. macOS asks for **Microphone** access, then shows its share
    picker. Pick the meeting app's window (or the whole screen). Roomtone only
