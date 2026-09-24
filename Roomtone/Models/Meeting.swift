@@ -32,6 +32,20 @@ enum MeetingStatus: String, Codable, Hashable {
     case summarized
     case ready
     case failed
+
+    /// Sidebar label. nil for the normal finished state, so only noteworthy states show.
+    var displayLabel: String? {
+        switch self {
+        case .created: return "New"
+        case .recording: return "Recording"
+        case .recorded: return "Recorded"
+        case .transcribing: return "Transcribing…"
+        case .transcribed: return "Transcribed"
+        case .summarized: return "Summarized"
+        case .ready: return nil
+        case .failed: return "Failed"
+        }
+    }
 }
 
 struct Transcript: Codable, Hashable {
@@ -277,6 +291,7 @@ struct AppSettings: Codable, Equatable {
     var exportFormats: [ExportFormat]
     var deleteRecordingsAfterTranscription: Bool
     var neverUploadAutomatically: Bool
+    var appearance: AppearancePreference
 
     static let defaults = AppSettings(
         outputDirectoryPath: "~/Documents/Roomtone",
@@ -286,7 +301,8 @@ struct AppSettings: Codable, Equatable {
         ai: AISettings(provider: .none, baseURL: "http://127.0.0.1:11434/v1", model: "llama3.2", apiKey: ""),
         exportFormats: [.markdown, .json, .srt],
         deleteRecordingsAfterTranscription: false,
-        neverUploadAutomatically: true
+        neverUploadAutomatically: true,
+        appearance: .system
     )
 
     var resolvedOutputDirectory: URL {
@@ -314,6 +330,10 @@ struct AppSettings: Codable, Equatable {
             if obj["transcriptionModel"] == nil {
                 obj["transcriptionModel"] = WhisperModel.smallEn.rawValue
             }
+            // Added after release; without this, older settings.json files reset to defaults.
+            if obj["appearance"] == nil {
+                obj["appearance"] = AppearancePreference.system.rawValue
+            }
             guard let patched = try? JSONSerialization.data(withJSONObject: obj),
                   let decoded = try? JSONDecoder().decode(AppSettings.self, from: patched) else {
                 return .defaults
@@ -327,6 +347,22 @@ struct AppSettings: Codable, Equatable {
         encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
         guard let data = try? encoder.encode(self) else { return }
         try? data.write(to: Self.fileURL, options: .atomic)
+    }
+}
+
+enum AppearancePreference: String, Codable, CaseIterable, Identifiable {
+    case system
+    case light
+    case dark
+
+    var id: String { rawValue }
+
+    var displayName: String {
+        switch self {
+        case .system: return "System"
+        case .light: return "Light"
+        case .dark: return "Dark"
+        }
     }
 }
 

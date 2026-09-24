@@ -24,6 +24,7 @@
 		9372751C8F42087B83C07398 /* RoomtoneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7D0D8FFA4145329B006A67 /* RoomtoneApp.swift */; };
 		A5E142F6386506DA715419D9 /* ProcessingBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA72BFD83B7A28CE5A797EAB /* ProcessingBanner.swift */; };
 		AE58AFD5CD7F69BCDB39274A /* MultiFormatExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76F962B3FFD2DBBAB8635BD /* MultiFormatExporter.swift */; };
+		AE6F0B802A63C9A0FC0BBF9F /* AppearanceToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4A6F70DDD496CF11F1163A /* AppearanceToggle.swift */; };
 		E92D42453B35C914C447D215 /* RecordingHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5F1F5D0002D80189F56155 /* RecordingHUD.swift */; };
 		F18FDBD12C25C7E16D2306E6 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC464306C0D24AE13EA2D8A7 /* AppModel.swift */; };
 		FD53DE7A22205C128676FA88 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB788E8FEED4C8C0CDBCBA73 /* SettingsView.swift */; };
@@ -51,6 +52,7 @@
 		CE08C44615AB67DE6F3C1866 /* MeetingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingDetailView.swift; sourceTree = "<group>"; };
 		D9FAFB5D13BC87411619499E /* ServiceProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProtocols.swift; sourceTree = "<group>"; };
 		DB788E8FEED4C8C0CDBCBA73 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		DE4A6F70DDD496CF11F1163A /* AppearanceToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceToggle.swift; sourceTree = "<group>"; };
 		E2C1B3841A2D2A5D532E0E44 /* CapturePermissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturePermissions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -206,6 +208,7 @@
 		DB838DF13E5F909D39C4311F /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				DE4A6F70DDD496CF11F1163A /* AppearanceToggle.swift */,
 				CA72BFD83B7A28CE5A797EAB /* ProcessingBanner.swift */,
 			);
 			path = Shared;
@@ -315,6 +318,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F18FDBD12C25C7E16D2306E6 /* AppModel.swift in Sources */,
+				AE6F0B802A63C9A0FC0BBF9F /* AppearanceToggle.swift in Sources */,
 				91E2885AB947281E2FB44714 /* CapturePermissions.swift in Sources */,
 				72696BA4FEE1C9E87D520180 /* ContentSharingPickerCoordinator.swift in Sources */,
 				7723B94D9A0CC205CD3C1190 /* ContentView.swift in Sources */,

@@ -119,6 +119,11 @@ or reorder steps without re-measuring every meeting.
 
 Append newest first, one line each.
 
+- 2026-09-24 — Appearance setting (System/Light/Dark) + sun/moon toolbar toggle,
+  applied via `NSApp.appearance` (not `.preferredColorScheme`, which misses the
+  Settings scene, HUD panel and alerts). `AppSettings.load()` backfills missing keys;
+  add one there for every new settings field. Plus 9 GUI audit fixes (hover trash,
+  ⋯ menu for Reprocess/Delete, rename on Return/blur, shorter transcript meta).
 - 2026-09-24 — Signing moved to `Config/Signing.xcconfig` (no team ID, committed)
   plus `Config/Signing.local.xcconfig` (gitignored) for your own team and bundle ID.
   Don't put `DEVELOPMENT_TEAM` or `PRODUCT_BUNDLE_IDENTIFIER` back in `project.yml`:
