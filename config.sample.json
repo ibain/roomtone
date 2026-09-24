@@ -1,0 +1,22 @@
+{
+  "outputDirectory": "~/Documents/Roomtone",
+  "sampleRate": 48000,
+  "ai": {
+    "provider": "none",
+    "baseURL": "http://127.0.0.1:11434/v1",
+    "model": "llama3.2",
+    "apiKey": ""
+  },
+  "export": {
+    "defaultFormats": [
+      "markdown",
+      "json",
+      "srt"
+    ]
+  },
+  "privacy": {
+    "deleteRecordingsAfterTranscription": false,
+    "neverUploadAutomatically": true
+  },
+  "transcriptionModel": "small.en"
+}

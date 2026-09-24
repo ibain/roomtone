@@ -1,0 +1,43 @@
+# Xcode
+DerivedData/
+build/
+*.xcuserstate
+*.xcuserdata/
+*.moved-aside
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+timeline.xctimeline
+playground.xcworkspace
+
+# Swift Package Manager
+.build/
+.swiftpm/
+Packages/
+Package.resolved
+
+# macOS
+.DS_Store
+*.swp
+*~
+
+# Secrets / local config
+.env
+.env.*
+!.env.example
+config.local.json
+*.pem
+
+# ASR / models (large)
+Scripts/asr/.venv/
+Scripts/asr/models/
+*.bin
+*.mlmodel
+*.mlpackage
+
+# IDE
+.idea/
+.vscode/
+*.code-workspace
+__pycache__/

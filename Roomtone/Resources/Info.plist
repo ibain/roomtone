@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>Roomtone</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIconFile</key>
+	<string>Roomtone</string>
+	<key>CFBundleIconName</key>
+	<string>Roomtone</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>Roomtone</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>0.1.0</string>
+	<key>CFBundleVersion</key>
+	<string>2</string>
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.productivity</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>14.0</string>
+	<key>NSAppleEventsUsageDescription</key>
+	<string>Roomtone may need accessibility-related permissions for audio source selection.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Roomtone records your microphone so your voice can be transcribed separately from meeting audio.</string>
+	<key>NSScreenCaptureUsageDescription</key>
+	<string>Roomtone uses the macOS share picker to capture meeting audio (Zoom, Slack, etc.) for local transcription. It records audio only — not your screen video.</string>
+	<key>RoomtoneSourceRoot</key>
+	<string>$(SRCROOT)</string>
+</dict>
+</plist>

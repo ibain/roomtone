@@ -1,0 +1,81 @@
+name: Roomtone
+options:
+  bundleIdPrefix: com.ibain
+  deploymentTarget:
+    macOS: "14.0"
+  createIntermediateGroups: true
+  groupSortPosition: top
+  # XcodeGen drops Icon Composer .icon bundles; re-attach after generate.
+  postGenCommand: python3 Scripts/wire_app_icon.py
+settings:
+  base:
+    SWIFT_VERSION: "5.10"
+    MACOSX_DEPLOYMENT_TARGET: "14.0"
+    CODE_SIGN_STYLE: Automatic
+    CODE_SIGN_IDENTITY: Apple Development
+    DEVELOPMENT_TEAM: 2QYXCRU48S
+    CODE_SIGN_ENTITLEMENTS: Roomtone/Resources/Roomtone.entitlements
+    INFOPLIST_FILE: Roomtone/Resources/Info.plist
+    PRODUCT_BUNDLE_IDENTIFIER: com.ibain.roomtone
+    PRODUCT_NAME: Roomtone
+    GENERATE_INFOPLIST_FILE: false
+    ENABLE_HARDENED_RUNTIME: true
+    DEAD_CODE_STRIPPING: true
+    ENABLE_USER_SCRIPT_SANDBOXING: true
+    STRING_CATALOG_GENERATE_SYMBOLS: true
+    COMBINE_HIDPI_IMAGES: true
+    ASSETCATALOG_COMPILER_APPICON_NAME: Roomtone
+targets:
+  Roomtone:
+    type: application
+    platform: macOS
+    sources:
+      - path: Roomtone
+        excludes:
+          - Resources/**
+          - "**/*.icon"
+    resources:
+      - path: Roomtone/Resources
+        excludes:
+          - Info.plist
+          - Roomtone.entitlements
+    settings:
+      base:
+        ASSETCATALOG_COMPILER_APPICON_NAME: Roomtone
+        LD_RUNPATH_SEARCH_PATHS:
+          - "$(inherited)"
+          - "@executable_path/../Frameworks"
+        CODE_SIGN_STYLE: Automatic
+        CODE_SIGN_IDENTITY: Apple Development
+        DEVELOPMENT_TEAM: 2QYXCRU48S
+        ENABLE_HARDENED_RUNTIME: true
+        DEAD_CODE_STRIPPING: true
+    entitlements:
+      path: Roomtone/Resources/Roomtone.entitlements
+      properties:
+        com.apple.security.app-sandbox: false
+        com.apple.security.device.audio-input: true
+        com.apple.security.files.user-selected.read-write: true
+    info:
+      path: Roomtone/Resources/Info.plist
+      properties:
+        CFBundleName: Roomtone
+        CFBundleDisplayName: Roomtone
+        CFBundleIdentifier: $(PRODUCT_BUNDLE_IDENTIFIER)
+        CFBundleShortVersionString: "0.1.0"
+        CFBundleVersion: "2"
+        CFBundleIconFile: Roomtone
+        CFBundleIconName: Roomtone
+        LSMinimumSystemVersion: "14.0"
+        NSMicrophoneUsageDescription: Roomtone records your microphone so your voice can be transcribed separately from meeting audio.
+        NSScreenCaptureUsageDescription: Roomtone uses the macOS share picker to capture meeting audio (Zoom, Slack, etc.) for local transcription. It records audio only — not your screen video.
+        NSAppleEventsUsageDescription: Roomtone may need accessibility-related permissions for audio source selection.
+        LSApplicationCategoryType: public.app-category.productivity
+        RoomtoneSourceRoot: $(SRCROOT)
+schemes:
+  Roomtone:
+    build:
+      targets:
+        Roomtone: all
+    run:
+      config: Debug

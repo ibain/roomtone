@@ -1,0 +1,541 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A0F1E2D3C4B5A69788776655 /* Roomtone.icon in Resources */ = {isa = PBXBuildFile; fileRef = EFD2B07B30266ABD00963D56 /* Roomtone.icon */; };
+		01A9715E94D66FE1960EFC1E /* ProviderSummarizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75DE28DEA7FB2E83BCF2591 /* ProviderSummarizer.swift */; };
+		07F163ABE776AD06274D394A /* Meeting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A52AAF3C4F9E3529ADD7C71 /* Meeting.swift */; };
+		0D18FF28C06CC175BDB4A6C3 /* FasterWhisperTranscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEDA471A0360BB78EDFC561 /* FasterWhisperTranscriber.swift */; };
+		1391B0B80A2718966DD25714 /* WAVWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA392B33885260D643771B36 /* WAVWriter.swift */; };
+		199FB0389A21D2C976EDDEEF /* DualTrackAudioCapturer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399B38FB07FE9233695751F4 /* DualTrackAudioCapturer.swift */; };
+		1E99B4DDC802386B385EB75B /* MeetingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE08C44615AB67DE6F3C1866 /* MeetingDetailView.swift */; };
+		2124C0EB92BEACA54749E2DD /* ServiceProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FAFB5D13BC87411619499E /* ServiceProtocols.swift */; };
+		5A0C4A556EE4ADC7E9F1D5A8 /* FileMeetingStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA4C1BA2B8C646AB8958C5B /* FileMeetingStore.swift */; };
+		72696BA4FEE1C9E87D520180 /* ContentSharingPickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A415A3125BE1EC392E4FF7FE /* ContentSharingPickerCoordinator.swift */; };
+		7723B94D9A0CC205CD3C1190 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D950B53E0640CD2EC940AC /* ContentView.swift */; };
+		8BB9C3A61CD4C34A0FEE2733 /* RecordingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB3FBF0760FECCB86E3338 /* RecordingView.swift */; };
+		8EF10D73715FAE04C7C9869E /* RoomtoneLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3EEC39BDD73F7D17C3D51D /* RoomtoneLog.swift */; };
+		91E2885AB947281E2FB44714 /* CapturePermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C1B3841A2D2A5D532E0E44 /* CapturePermissions.swift */; };
+		9372751C8F42087B83C07398 /* RoomtoneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7D0D8FFA4145329B006A67 /* RoomtoneApp.swift */; };
+		A5E142F6386506DA715419D9 /* ProcessingBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA72BFD83B7A28CE5A797EAB /* ProcessingBanner.swift */; };
+		AE58AFD5CD7F69BCDB39274A /* MultiFormatExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76F962B3FFD2DBBAB8635BD /* MultiFormatExporter.swift */; };
+		E92D42453B35C914C447D215 /* RecordingHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5F1F5D0002D80189F56155 /* RecordingHUD.swift */; };
+		F18FDBD12C25C7E16D2306E6 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC464306C0D24AE13EA2D8A7 /* AppModel.swift */; };
+		FD53DE7A22205C128676FA88 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB788E8FEED4C8C0CDBCBA73 /* SettingsView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		EFD2B07B30266ABD00963D56 /* Roomtone.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = Roomtone.icon; sourceTree = "<group>"; };
+		09D950B53E0640CD2EC940AC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		399B38FB07FE9233695751F4 /* DualTrackAudioCapturer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DualTrackAudioCapturer.swift; sourceTree = "<group>"; };
+		3BA4C1BA2B8C646AB8958C5B /* FileMeetingStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileMeetingStore.swift; sourceTree = "<group>"; };
+		3CEDA471A0360BB78EDFC561 /* FasterWhisperTranscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FasterWhisperTranscriber.swift; sourceTree = "<group>"; };
+		3E5F1F5D0002D80189F56155 /* RecordingHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingHUD.swift; sourceTree = "<group>"; };
+		4E3EEC39BDD73F7D17C3D51D /* RoomtoneLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomtoneLog.swift; sourceTree = "<group>"; };
+		5A7D0D8FFA4145329B006A67 /* RoomtoneApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomtoneApp.swift; sourceTree = "<group>"; };
+		8F2F8F2EADF76B0E4ED387BA /* Roomtone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Roomtone.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		99FB3FBF0760FECCB86E3338 /* RecordingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingView.swift; sourceTree = "<group>"; };
+		9A52AAF3C4F9E3529ADD7C71 /* Meeting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meeting.swift; sourceTree = "<group>"; };
+		A415A3125BE1EC392E4FF7FE /* ContentSharingPickerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSharingPickerCoordinator.swift; sourceTree = "<group>"; };
+		A76F962B3FFD2DBBAB8635BD /* MultiFormatExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiFormatExporter.swift; sourceTree = "<group>"; };
+		AA392B33885260D643771B36 /* WAVWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WAVWriter.swift; sourceTree = "<group>"; };
+		C75DE28DEA7FB2E83BCF2591 /* ProviderSummarizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderSummarizer.swift; sourceTree = "<group>"; };
+		CA72BFD83B7A28CE5A797EAB /* ProcessingBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessingBanner.swift; sourceTree = "<group>"; };
+		CC464306C0D24AE13EA2D8A7 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
+		CE08C44615AB67DE6F3C1866 /* MeetingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingDetailView.swift; sourceTree = "<group>"; };
+		D9FAFB5D13BC87411619499E /* ServiceProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProtocols.swift; sourceTree = "<group>"; };
+		DB788E8FEED4C8C0CDBCBA73 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		E2C1B3841A2D2A5D532E0E44 /* CapturePermissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturePermissions.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		C2B3A4D5E6F7081910BCDEFA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EFD2B07B30266ABD00963D56 /* Roomtone.icon */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		1CC66CBAA4E779BF2F7A5AF8 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				CECF5B57077F26589E3FF5C0 /* Meetings */,
+				771A44A7C87BEDDCF73F35A0 /* Recording */,
+				593E05FDFCBE31A9627DC723 /* Settings */,
+				DB838DF13E5F909D39C4311F /* Shared */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		593E05FDFCBE31A9627DC723 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				DB788E8FEED4C8C0CDBCBA73 /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		6D435E0CE0CF2D90C626676C = {
+			isa = PBXGroup;
+			children = (
+				8F6CD4BF5316FEBEECBF1DFC /* Roomtone */,
+				DE3F51E8E80E32161EB0627D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6DD4E6AE37AB2A75745A2496 /* Export */ = {
+			isa = PBXGroup;
+			children = (
+				A76F962B3FFD2DBBAB8635BD /* MultiFormatExporter.swift */,
+			);
+			path = Export;
+			sourceTree = "<group>";
+		};
+		771A44A7C87BEDDCF73F35A0 /* Recording */ = {
+			isa = PBXGroup;
+			children = (
+				3E5F1F5D0002D80189F56155 /* RecordingHUD.swift */,
+				99FB3FBF0760FECCB86E3338 /* RecordingView.swift */,
+			);
+			path = Recording;
+			sourceTree = "<group>";
+		};
+		8F6CD4BF5316FEBEECBF1DFC /* Roomtone */ = {
+			isa = PBXGroup;
+			children = (
+				C2B3A4D5E6F7081910BCDEFA /* Resources */,
+				CE1DD474AF26D093E5D21AAB /* App */,
+				1CC66CBAA4E779BF2F7A5AF8 /* Features */,
+				F852E38CE94B119A1BFBB787 /* Models */,
+				C1B7771A9C5F3D09E3565646 /* Services */,
+			);
+			path = Roomtone;
+			sourceTree = "<group>";
+		};
+		B43048EDEE6E069DF89592B1 /* Transcription */ = {
+			isa = PBXGroup;
+			children = (
+				3CEDA471A0360BB78EDFC561 /* FasterWhisperTranscriber.swift */,
+			);
+			path = Transcription;
+			sourceTree = "<group>";
+		};
+		B45A65139583AB0542416E8F /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				D9FAFB5D13BC87411619499E /* ServiceProtocols.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		B617BAE1CB29B6BFF1FD7F65 /* Summarization */ = {
+			isa = PBXGroup;
+			children = (
+				C75DE28DEA7FB2E83BCF2591 /* ProviderSummarizer.swift */,
+			);
+			path = Summarization;
+			sourceTree = "<group>";
+		};
+		C1B7771A9C5F3D09E3565646 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				F9175A1F9E9F62A2A216B2BF /* Diagnostics */,
+				6DD4E6AE37AB2A75745A2496 /* Export */,
+				D9424F73BF32653BBD8013EC /* Permissions */,
+				B45A65139583AB0542416E8F /* Protocols */,
+				C9C4AC96B3B914B07B6A879B /* Recording */,
+				EF3821DD77DE5279536FF1E0 /* Storage */,
+				B617BAE1CB29B6BFF1FD7F65 /* Summarization */,
+				B43048EDEE6E069DF89592B1 /* Transcription */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		C9C4AC96B3B914B07B6A879B /* Recording */ = {
+			isa = PBXGroup;
+			children = (
+				A415A3125BE1EC392E4FF7FE /* ContentSharingPickerCoordinator.swift */,
+				399B38FB07FE9233695751F4 /* DualTrackAudioCapturer.swift */,
+				AA392B33885260D643771B36 /* WAVWriter.swift */,
+			);
+			path = Recording;
+			sourceTree = "<group>";
+		};
+		CE1DD474AF26D093E5D21AAB /* App */ = {
+			isa = PBXGroup;
+			children = (
+				CC464306C0D24AE13EA2D8A7 /* AppModel.swift */,
+				09D950B53E0640CD2EC940AC /* ContentView.swift */,
+				5A7D0D8FFA4145329B006A67 /* RoomtoneApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		CECF5B57077F26589E3FF5C0 /* Meetings */ = {
+			isa = PBXGroup;
+			children = (
+				CE08C44615AB67DE6F3C1866 /* MeetingDetailView.swift */,
+			);
+			path = Meetings;
+			sourceTree = "<group>";
+		};
+		D9424F73BF32653BBD8013EC /* Permissions */ = {
+			isa = PBXGroup;
+			children = (
+				E2C1B3841A2D2A5D532E0E44 /* CapturePermissions.swift */,
+			);
+			path = Permissions;
+			sourceTree = "<group>";
+		};
+		DB838DF13E5F909D39C4311F /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				CA72BFD83B7A28CE5A797EAB /* ProcessingBanner.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		DE3F51E8E80E32161EB0627D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8F2F8F2EADF76B0E4ED387BA /* Roomtone.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EF3821DD77DE5279536FF1E0 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				3BA4C1BA2B8C646AB8958C5B /* FileMeetingStore.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		F852E38CE94B119A1BFBB787 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9A52AAF3C4F9E3529ADD7C71 /* Meeting.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F9175A1F9E9F62A2A216B2BF /* Diagnostics */ = {
+			isa = PBXGroup;
+			children = (
+				4E3EEC39BDD73F7D17C3D51D /* RoomtoneLog.swift */,
+			);
+			path = Diagnostics;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5AE26DDC91053C6E3A4C14C3 /* Roomtone */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8F8B9819D331686F7FFB106F /* Build configuration list for PBXNativeTarget "Roomtone" */;
+			buildPhases = (
+				B1A2C3D4E5F6071890ABCDEF /* Resources */,
+				30DE0667F2C31E69476A1103 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Roomtone;
+			packageProductDependencies = (
+			);
+			productName = Roomtone;
+			productReference = 8F2F8F2EADF76B0E4ED387BA /* Roomtone.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3058C68474344B0AB4DC8176 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					5AE26DDC91053C6E3A4C14C3 = {
+						DevelopmentTeam = 2QYXCRU48S;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 43D82069F1C41113627C7124 /* Build configuration list for PBXProject "Roomtone" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 6D435E0CE0CF2D90C626676C;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = DE3F51E8E80E32161EB0627D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5AE26DDC91053C6E3A4C14C3 /* Roomtone */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B1A2C3D4E5F6071890ABCDEF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A0F1E2D3C4B5A69788776655 /* Roomtone.icon in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		30DE0667F2C31E69476A1103 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F18FDBD12C25C7E16D2306E6 /* AppModel.swift in Sources */,
+				91E2885AB947281E2FB44714 /* CapturePermissions.swift in Sources */,
+				72696BA4FEE1C9E87D520180 /* ContentSharingPickerCoordinator.swift in Sources */,
+				7723B94D9A0CC205CD3C1190 /* ContentView.swift in Sources */,
+				199FB0389A21D2C976EDDEEF /* DualTrackAudioCapturer.swift in Sources */,
+				0D18FF28C06CC175BDB4A6C3 /* FasterWhisperTranscriber.swift in Sources */,
+				5A0C4A556EE4ADC7E9F1D5A8 /* FileMeetingStore.swift in Sources */,
+				07F163ABE776AD06274D394A /* Meeting.swift in Sources */,
+				1E99B4DDC802386B385EB75B /* MeetingDetailView.swift in Sources */,
+				AE58AFD5CD7F69BCDB39274A /* MultiFormatExporter.swift in Sources */,
+				A5E142F6386506DA715419D9 /* ProcessingBanner.swift in Sources */,
+				01A9715E94D66FE1960EFC1E /* ProviderSummarizer.swift in Sources */,
+				E92D42453B35C914C447D215 /* RecordingHUD.swift in Sources */,
+				8BB9C3A61CD4C34A0FEE2733 /* RecordingView.swift in Sources */,
+				9372751C8F42087B83C07398 /* RoomtoneApp.swift in Sources */,
+				8EF10D73715FAE04C7C9869E /* RoomtoneLog.swift in Sources */,
+				2124C0EB92BEACA54749E2DD /* ServiceProtocols.swift in Sources */,
+				FD53DE7A22205C128676FA88 /* SettingsView.swift in Sources */,
+				1391B0B80A2718966DD25714 /* WAVWriter.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		0269DA872801CDB2A2A4AC37 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = Roomtone;
+				CODE_SIGN_ENTITLEMENTS = Roomtone/Resources/Roomtone.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = 2QYXCRU48S;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = Roomtone/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		8B448CA4F83110D4CFC3DFEB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = Roomtone;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = Roomtone/Resources/Roomtone.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 2QYXCRU48S;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Roomtone/Resources/Info.plist;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ibain.roomtone;
+				PRODUCT_NAME = Roomtone;
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.10;
+			};
+			name = Release;
+		};
+		E32AC832E4C6D9ED96E591E7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = Roomtone;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = Roomtone/Resources/Roomtone.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 2QYXCRU48S;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Roomtone/Resources/Info.plist;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ibain.roomtone;
+				PRODUCT_NAME = Roomtone;
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.10;
+			};
+			name = Debug;
+		};
+		F76064BD3A712B7125C2709D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = Roomtone;
+				CODE_SIGN_ENTITLEMENTS = Roomtone/Resources/Roomtone.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = 2QYXCRU48S;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = Roomtone/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		43D82069F1C41113627C7124 /* Build configuration list for PBXProject "Roomtone" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E32AC832E4C6D9ED96E591E7 /* Debug */,
+				8B448CA4F83110D4CFC3DFEB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		8F8B9819D331686F7FFB106F /* Build configuration list for PBXNativeTarget "Roomtone" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F76064BD3A712B7125C2709D /* Debug */,
+				0269DA872801CDB2A2A4AC37 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3058C68474344B0AB4DC8176 /* Project object */;
+}
