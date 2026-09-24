@@ -317,9 +317,22 @@ struct AppSettings: Codable, Equatable {
         return dir.appendingPathComponent("settings.json")
     }
 
+    /// File only. `ai.apiKey` is filled from the keychain by `AppModel`, so helpers that
+    /// call this for the output folder don't touch the keychain.
     static func load() -> AppSettings {
-        let url = fileURL
-        guard let data = try? Data(contentsOf: url) else { return .defaults }
+        guard let data = try? Data(contentsOf: fileURL) else { return .defaults }
+        let settings = decode(data)
+        // Older builds stored the key in settings.json. Move it, then rewrite the file without it.
+        if let obj = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+           let ai = obj["ai"] as? [String: Any],
+           let key = ai["apiKey"] as? String,
+           key.isEmpty || APIKeyStore.save(key) {
+            settings.save()
+        }
+        return settings
+    }
+
+    private static func decode(_ data: Data) -> AppSettings {
         do {
             return try JSONDecoder().decode(AppSettings.self, from: data)
         } catch {
@@ -370,7 +383,12 @@ struct AISettings: Codable, Equatable {
     var provider: AIProvider
     var baseURL: String
     var model: String
-    var apiKey: String
+    /// Kept in the keychain (`APIKeyStore`); left out of settings.json on purpose.
+    var apiKey: String = ""
+
+    private enum CodingKeys: String, CodingKey {
+        case provider, baseURL, model
+    }
 
     /// A "local" provider pointed at a remote host still uploads the transcript.
     var leavesMachine: Bool {

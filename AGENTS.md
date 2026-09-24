@@ -124,6 +124,10 @@ or reorder steps without re-measuring every meeting.
 
 Append newest first, one line each.
 
+- 2026-09-24 — API key moved from `settings.json` to the login keychain
+  (`APIKeyStore`). `AISettings.apiKey` is excluded from `CodingKeys`; only `AppModel`
+  reads/writes the keychain, so `AppSettings.load()` in helpers never prompts.
+  `load()` migrates a plaintext key and rewrites the file.
 - 2026-09-24 — Appearance setting (System/Light/Dark) + sun/moon toolbar toggle,
   applied via `NSApp.appearance` (not `.preferredColorScheme`, which misses the
   Settings scene, HUD panel and alerts). `AppSettings.load()` backfills missing keys;

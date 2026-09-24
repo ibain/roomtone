@@ -22,7 +22,8 @@ final class AppModel: ObservableObject {
         summarizer: Summarizing? = nil,
         exporter: TranscriptExporting? = nil
     ) {
-        let settings = AppSettings.load()
+        var settings = AppSettings.load()
+        settings.ai.apiKey = APIKeyStore.read()
         self.settings = settings
         self.store = store ?? FileMeetingStore(rootDirectory: settings.resolvedOutputDirectory)
         self.capturer = capturer ?? DualTrackAudioCapturer()
@@ -85,6 +86,9 @@ final class AppModel: ObservableObject {
     }
 
     func updateSettings(_ newSettings: AppSettings) {
+        if newSettings.ai.apiKey != settings.ai.apiKey, !APIKeyStore.save(newSettings.ai.apiKey) {
+            lastError = "Couldn't save the API key to the keychain."
+        }
         settings = newSettings
         newSettings.save()
         applyAppearance()

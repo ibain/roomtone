@@ -84,8 +84,9 @@ require everyone on the call to agree.
 | Log | `~/Library/Logs/Roomtone/roomtone.log` |
 | Speech models | `~/.cache/huggingface/hub/` |
 
-Your API key, if you add one, is stored in plain text in `settings.json`.
-Keychain storage is on the list.
+Your API key, if you add one, is stored in your login keychain (item
+"Roomtone"), not in `settings.json`. Older builds kept it in plain text there;
+the first launch after updating moves it over and removes it from the file.
 
 ## Summaries (optional)
 
