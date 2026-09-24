@@ -124,6 +124,11 @@ or reorder steps without re-measuring every meeting.
 
 Append newest first, one line each.
 
+- 2026-09-24 — Settings auto-save (no Save button): controls save on change, text
+  fields on end editing (`@FocusState` change / `onSubmit`), window close flushes via
+  `NSWindow.willCloseNotification` (`onDisappear` is unreliable: SwiftUI can keep the
+  Settings view alive). A text field is focused on open, so don't gate saves on focus. `updateSettings` now runs often, so it only moves
+  the store and reloads meetings when the output folder changed.
 - 2026-09-24 — API key moved from `settings.json` to the login keychain
   (`APIKeyStore`). `AISettings.apiKey` is excluded from `CodingKeys`; only `AppModel`
   reads/writes the keychain, so `AppSettings.load()` in helpers never prompts.
