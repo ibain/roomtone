@@ -1,0 +1,60 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build app
+    runs-on: macos-26
+    timeout-minutes: 30
+    env:
+      XCODEGEN_VERSION: 2.46.0
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Show Xcode
+        run: xcodebuild -version
+
+      # Pinned so the generated project matches what's committed.
+      - name: Install XcodeGen
+        run: |
+          curl -fsSL -o /tmp/xcodegen.zip \
+            "https://github.com/yonaskolb/XcodeGen/releases/download/${XCODEGEN_VERSION}/xcodegen.zip"
+          unzip -q /tmp/xcodegen.zip -d /tmp
+          echo "/tmp/xcodegen/bin" >> "$GITHUB_PATH"
+
+      - name: Check project is regenerated
+        run: |
+          xcodegen generate
+          git diff --exit-code Roomtone.xcodeproj \
+            || { echo "::error::Roomtone.xcodeproj is out of date. Run xcodegen generate and commit."; exit 1; }
+
+      - name: Build
+        run: |
+          xcodebuild build \
+            -scheme Roomtone \
+            -destination 'platform=macOS' \
+            -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO
+
+  python:
+    name: Check Python scripts
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      # Syntax only; the ASR deps are too heavy for CI.
+      - run: python -m py_compile Scripts/*.py Scripts/asr/*.py
