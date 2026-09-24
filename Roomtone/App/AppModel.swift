@@ -87,6 +87,7 @@ final class AppModel: ObservableObject {
     func updateSettings(_ newSettings: AppSettings) {
         settings = newSettings
         newSettings.save()
+        applyAppearance()
         if let fileStore = store as? FileMeetingStore {
             fileStore.rootDirectory = newSettings.resolvedOutputDirectory
         }

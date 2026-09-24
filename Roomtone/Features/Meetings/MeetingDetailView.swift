@@ -8,6 +8,8 @@ struct MeetingDetailView: View {
     @State private var transcript: Transcript?
     @State private var summary: MeetingSummary?
     @State private var confirmDelete = false
+    @State private var confirmReprocess = false
+    @FocusState private var focusedSpeaker: String?
     @State private var didCopyTranscript = false
     @State private var isEditingTitle = false
     @State private var titleDraft = ""
@@ -43,19 +45,19 @@ struct MeetingDetailView: View {
                             .foregroundStyle(.secondary)
                     }
                     Spacer()
-                    Button {
-                        appModel.goHome()
+                    Menu {
+                        Button("Reprocess…") { confirmReprocess = true }
+                            .disabled(!canReprocess)
+                        Divider()
+                        Button("Delete Meeting…", role: .destructive) { confirmDelete = true }
                     } label: {
-                        Label("Home", systemImage: "house")
+                        Label("More", systemImage: "ellipsis.circle")
+                            .labelStyle(.iconOnly)
                     }
-                    Button(role: .destructive) {
-                        confirmDelete = true
-                    } label: {
-                        Label("Delete", systemImage: "trash")
-                    }
-                    Button("Reprocess") {
-                        Task { await appModel.processMeeting(meetingID: meeting.id) }
-                    }
+                    .menuStyle(.borderlessButton)
+                    .menuIndicator(.hidden)
+                    .fixedSize()
+                    .help("More actions")
                 }
 
                 if case .processing(let stage) = appModel.recordingState {
@@ -85,24 +87,22 @@ struct MeetingDetailView: View {
                             Text("No speakers yet.")
                                 .foregroundStyle(.secondary)
                         } else {
+                            // Commits on Return or when focus leaves the field.
                             ForEach(meeting.speakers, id: \.self) { speaker in
-                                HStack(spacing: 8) {
-                                    TextField(
-                                        "Speaker name",
-                                        text: Binding(
-                                            get: { speakerDrafts[speaker] ?? speaker },
-                                            set: { speakerDrafts[speaker] = $0 }
-                                        )
+                                TextField(
+                                    "Speaker name",
+                                    text: Binding(
+                                        get: { speakerDrafts[speaker] ?? speaker },
+                                        set: { speakerDrafts[speaker] = $0 }
                                     )
-                                    .textFieldStyle(.roundedBorder)
-                                    .onSubmit { commitSpeakerRename(from: speaker) }
-
-                                    Button("Rename") {
-                                        commitSpeakerRename(from: speaker)
-                                    }
-                                    .disabled(!canRenameSpeaker(from: speaker))
-                                }
+                                )
+                                .textFieldStyle(.roundedBorder)
+                                .focused($focusedSpeaker, equals: speaker)
+                                .onSubmit { commitSpeakerRename(from: speaker) }
                             }
+                            Text("Edit a name and press Return to rename.")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
                         }
                     }
                 }
@@ -112,9 +112,13 @@ struct MeetingDetailView: View {
                         LazyVStack(alignment: .leading, spacing: 12) {
                             ForEach(filteredBlocks(transcript)) { block in
                                 VStack(alignment: .leading, spacing: 4) {
-                                    Text("\(Self.ts(block.start)) – \(Self.ts(block.end)) · \(block.speaker)")
-                                        .font(.caption.weight(.semibold))
-                                        .foregroundStyle(.secondary)
+                                    HStack(spacing: 6) {
+                                        Text(block.speaker)
+                                            .font(.caption.weight(.semibold))
+                                        Text(Self.shortTs(block.start))
+                                            .font(.caption.monospacedDigit())
+                                            .foregroundStyle(.secondary)
+                                    }
                                     Text(block.text)
                                 }
                                 .id(block.id)
@@ -169,6 +173,11 @@ struct MeetingDetailView: View {
                 titleDraft = newTitle
             }
         }
+        .onChange(of: focusedSpeaker) { old, new in
+            if let old, old != new, canRenameSpeaker(from: old) {
+                commitSpeakerRename(from: old)
+            }
+        }
         .onChange(of: appModel.recordingState) { _, state in
             if case .idle = state {
                 reload()
@@ -183,6 +192,19 @@ struct MeetingDetailView: View {
         } message: {
             Text("“\(meeting.title)” and all of its audio, transcript, and summary files will be permanently removed.")
         }
+        .confirmationDialog("Reprocess this meeting?", isPresented: $confirmReprocess, titleVisibility: .visible) {
+            Button("Reprocess") {
+                Task { await appModel.processMeeting(meetingID: meeting.id) }
+            }
+            Button("Cancel", role: .cancel) {}
+        } message: {
+            Text("The transcript is regenerated from the saved audio. Speaker names you changed will be reset.")
+        }
+    }
+
+    /// Needs the WAVs (gone if “Delete recordings after transcription” is on) and no active job.
+    private var canReprocess: Bool {
+        meeting.audio != nil && appModel.recordingState == .idle
     }
 
     private func beginTitleEdit() {
@@ -253,6 +275,17 @@ struct MeetingDetailView: View {
             try? await Task.sleep(nanoseconds: 1_500_000_000)
             didCopyTranscript = false
         }
+    }
+
+    /// m:ss under an hour, h:mm:ss after.
+    private static func shortTs(_ t: TimeInterval) -> String {
+        let total = Int(t.rounded())
+        let h = total / 3600
+        let m = (total % 3600) / 60
+        let s = total % 60
+        return h > 0
+            ? String(format: "%d:%02d:%02d", h, m, s)
+            : String(format: "%d:%02d", m, s)
     }
 
     private static func ts(_ t: TimeInterval) -> String {

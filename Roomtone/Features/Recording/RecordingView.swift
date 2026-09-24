@@ -11,12 +11,12 @@ struct RecordingView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
-                Text("Roomtone")
+                Text("New recording")
                     .font(.largeTitle.weight(.semibold))
                 Text("Local meeting recorder — dual-track, privacy-first.")
                     .foregroundStyle(.secondary)
 
-                GroupBox("New recording") {
+                GroupBox {
                     VStack(alignment: .leading, spacing: 12) {
                         TextField("Meeting title", text: $title)
 
@@ -72,6 +72,12 @@ struct RecordingView: View {
             .buttonStyle(.borderedProminent)
             .tint(.red)
             .disabled(selectedMicID == nil || appModel.recordingState == .preparing)
+
+            if selectedMicID == nil {
+                Text("Choose a microphone to start recording.")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
 
         case .recording(let elapsed, let mic, let system), .paused(let elapsed, let mic, let system):
             VStack(alignment: .leading, spacing: 10) {

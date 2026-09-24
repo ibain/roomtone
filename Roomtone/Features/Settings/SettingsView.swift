@@ -7,6 +7,22 @@ struct SettingsView: View {
 
     var body: some View {
         Form {
+            // Applies immediately, independent of Save.
+            Section("Appearance") {
+                Picker("Appearance", selection: Binding(
+                    get: { appModel.settings.appearance },
+                    set: { appModel.setAppearance($0) }
+                )) {
+                    ForEach(AppearancePreference.allCases) { option in
+                        Text(option.displayName).tag(option)
+                    }
+                }
+                .pickerStyle(.segmented)
+                Text("System follows macOS. The toolbar button sets Light or Dark directly.")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+
             Section("Recording") {
                 HStack {
                     TextField("Output directory", text: $draft.outputDirectoryPath)
@@ -68,11 +84,13 @@ struct SettingsView: View {
 
             Button("Save") {
                 syncModelToLanguage()
+                // Don't let a stale draft undo a toolbar appearance change.
+                draft.appearance = appModel.settings.appearance
                 appModel.updateSettings(draft)
             }
         }
         .padding(20)
-        .frame(width: 560, height: 540)
+        .frame(width: 560, height: 600)
         .onAppear {
             draft = appModel.settings
             syncModelToLanguage()

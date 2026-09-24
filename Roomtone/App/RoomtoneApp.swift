@@ -9,6 +9,7 @@ struct RoomtoneApp: App {
             ContentView()
                 .environmentObject(appModel)
                 .frame(minWidth: 880, minHeight: 560)
+                .onAppear { appModel.applyAppearance() }
                 .task {
                     // Mic only at launch. Screen/system audio uses Apple's picker on Start.
                     _ = await CapturePermissions.requestMicrophoneAccess()

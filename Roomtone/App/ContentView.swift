@@ -4,6 +4,7 @@ struct ContentView: View {
     @EnvironmentObject private var appModel: AppModel
     @State private var searchText = ""
     @State private var meetingPendingDelete: Meeting?
+    @State private var hoveredMeetingID: Meeting.ID?
 
     var body: some View {
         NavigationSplitView {
@@ -17,11 +18,15 @@ struct ContentView: View {
                                 Text(meeting.date.formatted(date: .abbreviated, time: .shortened))
                                     .font(.caption)
                                     .foregroundStyle(.secondary)
-                                Text(meeting.status.rawValue)
-                                    .font(.caption2)
-                                    .foregroundStyle(.tertiary)
+                                if let status = meeting.status.displayLabel {
+                                    Text(status)
+                                        .font(.caption2)
+                                        .foregroundStyle(meeting.status == .failed ? AnyShapeStyle(.red) : AnyShapeStyle(.secondary))
+                                }
                             }
                             Spacer(minLength: 8)
+                            // Hover-only; opacity keeps row height stable.
+                            let isHovered = hoveredMeetingID == meeting.id
                             Button {
                                 meetingPendingDelete = meeting
                             } label: {
@@ -30,8 +35,18 @@ struct ContentView: View {
                             }
                             .buttonStyle(.borderless)
                             .help("Delete meeting")
+                            .opacity(isHovered ? 1 : 0)
+                            .allowsHitTesting(isHovered)
+                            .accessibilityHidden(!isHovered)
                         }
                         .contentShape(Rectangle())
+                        .onHover { hovering in
+                            if hovering {
+                                hoveredMeetingID = meeting.id
+                            } else if hoveredMeetingID == meeting.id {
+                                hoveredMeetingID = nil
+                            }
+                        }
                         .tag(Optional(meeting.id))
                         .contextMenu {
                             Button("Delete Meeting", role: .destructive) {
@@ -42,11 +57,19 @@ struct ContentView: View {
                 }
             }
             .listStyle(.sidebar)
+            .onDeleteCommand {
+                if let meeting = appModel.selectedMeeting {
+                    meetingPendingDelete = meeting
+                }
+            }
             .navigationSplitViewColumnWidth(min: 220, ideal: 260)
         } detail: {
             VStack(spacing: 0) {
-                ConsentBanner()
-                Divider()
+                // Consent only matters where recording starts.
+                if showsRecordingScreen {
+                    ConsentBanner()
+                    Divider()
+                }
                 if showsRecordingSetup {
                     RecordingView()
                 } else if let meeting = appModel.selectedMeeting {
@@ -65,9 +88,12 @@ struct ContentView: View {
                     }
                     .help("Back to new recording")
                 }
+                ToolbarItem(placement: .primaryAction) {
+                    AppearanceToggle()
+                }
             }
         }
-        .searchable(text: $searchText, prompt: "Search transcript")
+        .searchable(text: $searchText, prompt: "Search meetings and transcripts")
         .alert(
             Text(alertTitle),
             isPresented: Binding(
@@ -132,6 +158,10 @@ struct ContentView: View {
         case .idle, .processing:
             return false
         }
+    }
+
+    private var showsRecordingScreen: Bool {
+        showsRecordingSetup || appModel.selectedMeeting == nil
     }
 
     private var filteredMeetings: [Meeting] {
